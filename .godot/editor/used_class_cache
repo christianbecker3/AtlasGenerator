@@ -1,0 +1,5 @@
+res://export_presets.cfg::1708342355::bd2b76bcdbd45992efff16dd083880f8::
+res://icon.svg::1708299847::43b305bd3d55f8faec5e5175cbe35533::CompressedTexture2D
+res://Main.gd::1708341412::23faea929344be11c2fafd50a29473d8::GDScript
+res://main_window.tscn::1708342299::4e011d29b2e44629329f68d076f7ecc3::PackedScene,Control,ColorRect,VBoxContainer,Label,HBoxContainer,LineEdit,Button,SpinBox,CheckButton,FileDialog,AcceptDialog
+res://table-cells-large-solid.svg::1708341837::419031efe98d79b047baa07c97e784a5::CompressedTexture2D

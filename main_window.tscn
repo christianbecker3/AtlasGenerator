@@ -1,0 +1,166 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhnn6y3dcyi3r"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_1wb8u"]
+
+[node name="MainWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wb8u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="UiElements" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiElements"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UiElements/VBoxContainer"]
+layout_mode = 2
+text = "Atlas Generator"
+horizontal_alignment = 1
+
+[node name="Placeholder2" type="Control" parent="UiElements/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="UiElements/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+placeholder_text = "Please select a filepath which contains png files"
+
+[node name="Button" type="Button" parent="UiElements/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Select filepath"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UiElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UiElements/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Output filename:"
+
+[node name="LineEdit" type="LineEdit" parent="UiElements/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(426, 0)
+layout_mode = 2
+text = "Atlas"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UiElements/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Image size:"
+
+[node name="Size" type="SpinBox" parent="UiElements/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 1024.0
+step = 2.0
+value = 128.0
+rounded = true
+suffix = "px"
+
+[node name="Label2" type="Label" parent="UiElements/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Horiz. images:"
+
+[node name="HorizontalImages" type="SpinBox" parent="UiElements/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 32.0
+value = 2.0
+rounded = true
+
+[node name="SquareImage" type="CheckButton" parent="UiElements/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Square image"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UiElements/VBoxContainer"]
+layout_mode = 2
+
+[node name="Information" type="Label" parent="UiElements/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Placeholder" type="Control" parent="UiElements/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UiElements/VBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Generate Atlas"
+
+[node name="Version" type="Label" parent="UiElements"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -562.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "Version 0.1"
+horizontal_alignment = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a Directory"
+position = Vector2i(80, 75)
+size = Vector2i(454, 159)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "Notification"
+initial_position = 1
+
+[connection signal="text_changed" from="UiElements/VBoxContainer/HBoxContainer/LineEdit" to="." method="setup_folder"]
+[connection signal="pressed" from="UiElements/VBoxContainer/HBoxContainer/Button" to="." method="select_folder"]
+[connection signal="text_changed" from="UiElements/VBoxContainer/HBoxContainer4/LineEdit" to="." method="update_filename"]
+[connection signal="value_changed" from="UiElements/VBoxContainer/HBoxContainer2/Size" to="." method="update_info"]
+[connection signal="value_changed" from="UiElements/VBoxContainer/HBoxContainer2/HorizontalImages" to="." method="update_info"]
+[connection signal="pressed" from="UiElements/VBoxContainer/Button" to="." method="generate_atlas"]
+[connection signal="dir_selected" from="FileDialog" to="." method="setup_folder"]
