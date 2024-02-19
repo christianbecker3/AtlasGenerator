@@ -6,7 +6,7 @@ It serves as a tool for creating atlas images from a sequence of PNG files.
 
 ## Features
 - **PNG Sequence Input:** Accepts a sequence of PNG images as input.
-- **Atlas Generation:** Combines the input images into a single texture atlas for optimized rendering.
+- **Atlas Generation:** Combines the input images into a single texture atlas.
 
 ## How to Use
 1. Download the application for your platform (for now only windows is available).
