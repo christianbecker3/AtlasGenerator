@@ -79,23 +79,9 @@ text = "Atlas"
 [node name="ImagesizeContainer" type="HBoxContainer" parent="UiElements/VerticalElements"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UiElements/VerticalElements/ImagesizeContainer"]
-layout_mode = 2
-text = "Image size:"
-
-[node name="Size" type="SpinBox" parent="UiElements/VerticalElements/ImagesizeContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 2.0
-max_value = 1024.0
-step = 2.0
-value = 128.0
-rounded = true
-suffix = "px"
-
 [node name="Label2" type="Label" parent="UiElements/VerticalElements/ImagesizeContainer"]
 layout_mode = 2
-text = "Horiz. images:"
+text = "Horizontal images:"
 
 [node name="HorizontalImages" type="SpinBox" parent="UiElements/VerticalElements/ImagesizeContainer"]
 unique_name_in_owner = true
@@ -109,13 +95,6 @@ rounded = true
 unique_name_in_owner = true
 layout_mode = 2
 text = "Square image"
-
-[node name="InfoContainer" type="HBoxContainer" parent="UiElements/VerticalElements"]
-layout_mode = 2
-
-[node name="Information" type="Label" parent="UiElements/VerticalElements/InfoContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="Placeholder" type="Control" parent="UiElements/VerticalElements"]
 custom_minimum_size = Vector2(0, 20)
@@ -139,7 +118,7 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_vertical = 8
-text = "Version 0.1"
+text = "Version 0.0.2"
 horizontal_alignment = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -160,7 +139,6 @@ initial_position = 1
 [connection signal="text_changed" from="UiElements/VerticalElements/FilepathContainer/LineEdit" to="." method="setup_folder"]
 [connection signal="pressed" from="UiElements/VerticalElements/FilepathContainer/Button" to="." method="select_folder"]
 [connection signal="text_changed" from="UiElements/VerticalElements/OutputfileContainer/LineEdit" to="." method="update_filename"]
-[connection signal="value_changed" from="UiElements/VerticalElements/ImagesizeContainer/Size" to="." method="update_info"]
 [connection signal="value_changed" from="UiElements/VerticalElements/ImagesizeContainer/HorizontalImages" to="." method="update_info"]
 [connection signal="pressed" from="UiElements/VerticalElements/GenerateAtlasButton" to="." method="generate_atlas"]
 [connection signal="dir_selected" from="FileDialog" to="." method="setup_folder"]
